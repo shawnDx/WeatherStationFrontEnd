@@ -1,0 +1,11 @@
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image" [style.background-image]="'url(' + card.imageurl +')'"></div>
+    <mat-card-title>{{card.title}}</mat-card-title>
+    <mat-card-subtitle>{{card.dateTime}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <h1  class="contentText"*ngIf="!card.error">{{card.data}}<span [innerHTML]="card.uom"></span></h1>
+    <h1  class="error" *ngIf="card.error"><del>Error</del></h1>
+  </mat-card-content>
+</mat-card>

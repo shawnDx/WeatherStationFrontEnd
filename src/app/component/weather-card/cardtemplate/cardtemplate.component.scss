@@ -1,0 +1,22 @@
+.card {
+    max-width: 300px;
+    background-color: rgba($color: black, $alpha: 0.025);
+    color: white;
+  }
+  .contentText {
+    font-size: 30px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-align: center;
+  }
+
+  .error {
+    font-size: 30px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: red;
+  }
+  .header-image {
+    // background-image: url("../../../../assets/weatherInfoImg/Temperature-icon.png");
+    background-size: cover;
+  }
+  

@@ -1,0 +1,12 @@
+<div>
+    <h1 class="headdign">Station Name</h1>
+</div>
+<div>
+    <div class="inline" *ngFor = "let card of cards">
+        <app-cardtemplate [card]='card'></app-cardtemplate>
+    </div>
+</div>
+<div>
+    <h2 class="headdign">Last two hours</h2>
+    <app-lastdata-set [data] = 'tableData'></app-lastdata-set>
+</div>
