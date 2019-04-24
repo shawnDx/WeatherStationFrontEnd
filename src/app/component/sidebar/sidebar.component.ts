@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private data: DataService) { }
+  stationList = [
+    { name: "University Of Moratuwa(FIT) PCB", id: "University%20of%20Moratuwa(FIT)PCB" },
+    { name: "University Of Moratuwa(TCP) PCB", id: "University%20of%20Moratuwa(TCP)PCB" },
+    { name: "Backmegahawaththa PCB", id: "BAKMEEGAHAWATHTHA_PCB" }
+  ]
   ngOnInit() {
   }
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+
+  changeStation(id: string, name: string) {
+    this.data.changStation(id, name);
+  }
 
 }

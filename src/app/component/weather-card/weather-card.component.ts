@@ -3,6 +3,7 @@ import { Card } from './cardtemplate/card.model';
 import { ApiService } from '../../service/api.service';
 import { from } from 'rxjs';
 import { Dataset } from './lastdata-set/dataset.model';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-weather-card',
@@ -10,7 +11,7 @@ import { Dataset } from './lastdata-set/dataset.model';
   styleUrls: ['./weather-card.component.scss']
 })
 export class WeatherCardComponent implements OnInit {
-  tableData:any;
+  tableData: any;
   cards = [];
   tempretureCard: Card;
   pressureCard: Card;
@@ -20,8 +21,9 @@ export class WeatherCardComponent implements OnInit {
   windDirectionCard: Card;
   lightCard: Card;
   stationName: string = "University%20of%20Moratuwa(TCP)PCB";
+  stationDispayName: string = "University Of Moratuwa(FIT) PCB"
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private data: DataService) {
     // configure card before initialize
     this.tempretureCard = new Card();
     this.tempretureCard.title = "Temperature";
@@ -76,6 +78,13 @@ export class WeatherCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.data.currentStationName.subscribe(stationName =>{
+      this.stationDispayName = stationName;
+    })
+    this.data.currentStation.subscribe(station => {
+      this.stationName = station;
+      this.getdata();
+    });
     this.getdata();
     setInterval(() => {
       this.getdata();
