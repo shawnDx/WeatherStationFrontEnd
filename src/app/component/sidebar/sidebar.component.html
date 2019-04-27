@@ -1,1 +1,4 @@
-<a mat-list-item *ngFor="let st of stationList" (click)="changeStation(st.id,st.name)">{{st.name}}</a>
+<div *ngFor="let st of stationList">
+    <a mat-list-item (click)="changeStation(st.id,st.name)">{{st.name}}</a>
+    <mat-divider></mat-divider>
+</div>

@@ -15,6 +15,21 @@ export class Card {
             this.error = true;
         }
     }
+    singleValueverifyWithTwoType(value, type1Max, type1min, type1UOM: string, type2Max, type2min, type2Uom: string) {
+        if (value > type1min && value < type1Max) {
+            this.error = false;
+            this.data = value;
+            this.uom = type1UOM
+        }
+        else if (value > type2min && value < type2Max) {
+            this.error = false;
+            this.data = value;
+            this.uom = type2Uom
+        }
+        else {
+            this.error = true;
+        }
+    }
     multiValueverify(value: any, key: string) {
         this.error = true;
         for (let i = 0; i < value.length - 1; i++) {
@@ -26,6 +41,6 @@ export class Card {
                 break;
             }
         }
-        this.data = Number(value[value.length -1][key]).toFixed(2);
+        this.data = Number(value[0][key]).toFixed(2);
     }
 }

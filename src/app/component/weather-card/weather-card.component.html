@@ -1,12 +1,27 @@
-<div>
-    <h1 class="headdign">{{stationDispayName}}</h1>
-</div>
-<div>
-    <div class="inline" *ngFor = "let card of cards">
-        <app-cardtemplate [card]='card'></app-cardtemplate>
+<div *ngIf="!loadingFlag">
+    <div>
+        <h1 class="headdign">{{stationDispayName}}</h1>
+    </div>
+    <div *ngIf="workingFlag">
+        <div>
+            <div class="inline" *ngFor="let card of cards">
+                <app-cardtemplate [card]='card'></app-cardtemplate>
+            </div>
+        </div>
+        <div>
+            <h2 class="headdign">Last two hours</h2>
+            <app-lastdata-set [data]='tableData'></app-lastdata-set>
+        </div>
+    </div>
+    <div *ngIf="!workingFlag">
+        <h1 class="error">
+            This Station is not working properly
+        </h1>
     </div>
 </div>
-<div>
-    <h2 class="headdign">Last two hours</h2>
-    <app-lastdata-set [data] = 'tableData'></app-lastdata-set>
+<div *ngIf="loadingFlag">
+
+    <div class="loading-indicator">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
 </div>

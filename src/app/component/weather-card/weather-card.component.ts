@@ -22,6 +22,8 @@ export class WeatherCardComponent implements OnInit {
   lightCard: Card;
   stationName: string = "University%20of%20Moratuwa(TCP)PCB";
   stationDispayName: string = "University Of Moratuwa(FIT) PCB"
+  workingFlag: Boolean = false;
+  loadingFlag: Boolean = true;
 
   constructor(private apiService: ApiService, private data: DataService) {
     // configure card before initialize
@@ -78,26 +80,28 @@ export class WeatherCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.currentStationName.subscribe(stationName =>{
+    this.data.currentStationName.subscribe(stationName => {
       this.stationDispayName = stationName;
     })
     this.data.currentStation.subscribe(station => {
       this.stationName = station;
-      this.getdata();
+      this.getdata(true);
     });
-    this.getdata();
+    this.getdata(true);
     setInterval(() => {
-      this.getdata();
+      this.getdata(false);
     }, 10000);
   }
-  getdata() {
+  getdata(isFirstload: Boolean) {
+    if (isFirstload) this.loadingFlag = true;
     this.apiService.getThisTimeData({ station: this.stationName }).subscribe(data => {
       if (data[0].success) {
+        this.workingFlag = true;
         this.tableData = data;
         var result = data[0];
         console.log(data);
         this.tempretureCard.singleValueverify((Number(result.temperature)).toFixed(2), 50, 10);
-        this.pressureCard.singleValueverify((Number(result.pressure)).toFixed(2), 110, 90);
+        this.pressureCard.singleValueverifyWithTwoType((Number(result.pressure)).toFixed(2), 110, 85, "Kpa", 1020, 900, "hpa");
         this.humidityCard.singleValueverify((Number(result.humidity)).toFixed(2), 101, 0.01);
         this.winSpeedCard.multiValueverify(data, "windVelocity")// have ti use multi vaue verification
         this.windDirectionCard.multiValueverify(data, "windDirection") // have to use multi value verification
@@ -112,6 +116,10 @@ export class WeatherCardComponent implements OnInit {
         this.windDirectionCard.dateTime = result.time;
         this.lightCard.dateTime = result.time;
       }
-    })
+      else {
+        this.workingFlag = false;
+      }
+      this.loadingFlag = false;
+    });
   }
 }
