@@ -3,6 +3,10 @@ table {
   background-color: rgba($color: #000, $alpha: 0.032);
 }
 
+.example-container {
+  overflow: auto;
+}
+
 .hedder{
   color:white;
   font-size: 16px;

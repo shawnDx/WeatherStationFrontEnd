@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from './cardtemplate/card.model';
 import { ApiService } from '../../service/api.service';
-import { from } from 'rxjs';
+import { Subject } from 'rxjs';
+import { filter, startWith, takeUntil } from 'rxjs/operators';
 import { Dataset } from './lastdata-set/dataset.model';
 import { DataService } from '../../service/data.service';
+import { OnDestroy } from "@angular/core";
 
 @Component({
   selector: 'app-weather-card',
   templateUrl: './weather-card.component.html',
   styleUrls: ['./weather-card.component.scss']
 })
-export class WeatherCardComponent implements OnInit {
+export class WeatherCardComponent implements OnDestroy, OnInit {
+  private ngUnsubscribe = new Subject();
+  public refreshStation: any
   tableData: any;
   cards = [];
   tempretureCard: Card;
@@ -88,13 +92,22 @@ export class WeatherCardComponent implements OnInit {
       this.getdata(true);
     });
     this.getdata(true);
-    setInterval(() => {
+
+
+    this.refreshStation = setInterval(() => {
       this.getdata(false);
-    }, 10000);
+    }, 30000);
   }
+
+  ngOnDestroy() {
+    clearInterval(this.refreshStation);
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
   getdata(isFirstload: Boolean) {
     if (isFirstload) this.loadingFlag = true;
-    this.apiService.getThisTimeData({ station: this.stationName }).subscribe(data => {
+    this.apiService.getThisTimeData({ station: this.stationName }).pipe(takeUntil(this.ngUnsubscribe)).subscribe(data => {
       if (data[0].success) {
         this.workingFlag = true;
         this.tableData = data;

@@ -8,13 +8,13 @@
 .sidenav {
   width: 300px;
   border-right: 0;
-  box-shadow: 3px 0 6px rgba(0, 0,0, 0.24);
-  background-color:rgba(255, 255, 255, 1)
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 /*Toolbar drop shadow*/
-.matToolbar{
-  box-shadow: 0px 5px 6px rgba(0, 0,0, 0.24);
+.matToolbar {
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.24);
 }
 
 .mat-toolbar.mat-primary {
@@ -23,7 +23,18 @@
   z-index: 1;
 }
 
+.toolbar-icon {
+  padding: 0 5px 0 20px;
+}
+
 /* alignment of icons */
 .toolbar-spacer {
   flex: 1 1 auto;
+}
+.content {
+  padding: 10px;
+}
+
+.canclick {
+  cursor: pointer;
 }

@@ -15,12 +15,21 @@
       </button>
       <span>Weather UOM</span>
       <span class="toolbar-spacer"></span>
+
+      <mat-icon (click)="changePage()" class="toolbar-icon canclick" aria-hidden="false" aria-label="Example delete icon">format_align_center</mat-icon>
+      <p class="canclick" (click)="changePage()">All Stations</p>
+
+      <mat-icon  class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon">access_time</mat-icon>
       <h6>{{dateTime}}</h6>
-      <!-- <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-      <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon> -->
+      
     </mat-toolbar>
-    <div class="content">
-      <ng-content></ng-content>
+    <div>
+      <div *ngIf="!page">
+        <ng-content></ng-content>
+      </div>
+      <div class="content" *ngIf="page">
+        <app-station-status></app-station-status>
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

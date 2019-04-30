@@ -22,6 +22,8 @@ import { WindDirectionComponent } from './component/weather-card/wind-direction/
 import { WindSpeedComponent } from './component/weather-card/wind-speed/wind-speed.component';
 import { LastdataSetComponent } from './component/weather-card/lastdata-set/lastdata-set.component';
 import { CardtemplateComponent } from './component/weather-card/cardtemplate/cardtemplate.component';
+import { StationStatusComponent } from './component/station-status/station-status.component';
+import { ToolbarTemplateComponent } from './component/station-status/toolbar-template/toolbar-template.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CardtemplateComponent } from './component/weather-card/cardtemplate/car
     WindDirectionComponent,
     WindSpeedComponent,
     LastdataSetComponent,
-    CardtemplateComponent
+    CardtemplateComponent,
+    StationStatusComponent,
+    ToolbarTemplateComponent
   ],
   imports: [
     BrowserModule,

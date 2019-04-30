@@ -1,0 +1,16 @@
+<mat-toolbar class="toolbar" [ngClass]="active?'toolbarActive':'toolbarDeactive'">
+  <span>{{name}}</span>
+  <mat-progress-spinner *ngIf="!ready" [diameter]="30" mode="indeterminate"></mat-progress-spinner>
+
+  <mat-icon style="color:green" *ngIf="active&&ready" class="example-icon" aria-hidden="false" aria-label="Example heart icon">check_circle_outline</mat-icon>
+  <p style="color:green" *ngIf="active&&ready"> Active</p>
+
+  <mat-icon style="color:red" *ngIf="!active&&ready" class="example-icon" aria-hidden="false" aria-label="Example heart icon">highlight_off</mat-icon>
+  <p style="color:red" *ngIf="!active&&ready"> Not Working</p>
+  <span class="example-spacer"></span>
+  <mat-icon *ngIf="ready" class="example-icon" aria-hidden="false" aria-label="Example heart icon">access_time</mat-icon>
+  <p *ngIf="ready"> {{this.time.lastTime}} {{this.time.lastdate}}</p>
+
+  <mat-icon *ngIf="ready" class="example-icon" aria-hidden="false" aria-label="Example heart icon">info</mat-icon>
+  <p *ngIf="ready"> Last data log {{this.time.difDate}} Days {{this.time.difHour}} Hours {{this.time.difMin}} Minutes Ago</p>
+</mat-toolbar>
