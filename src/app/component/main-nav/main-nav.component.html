@@ -23,13 +23,14 @@
       <h6>{{dateTime}}</h6>
       
     </mat-toolbar>
-    <div>
+    <!-- <div>
       <div *ngIf="!page">
         <ng-content></ng-content>
       </div>
       <div class="content" *ngIf="page">
         <app-station-status></app-station-status>
       </div>
-    </div>
+    </div> -->
+    <app-all-stations></app-all-stations>
   </mat-sidenav-content>
 </mat-sidenav-container>

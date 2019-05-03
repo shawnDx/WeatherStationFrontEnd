@@ -1,0 +1,40 @@
+<div class="example-container mat-elevation-z8">
+  <table mat-table [dataSource]="tableData">
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    <!-- Temperature Column -->
+    <ng-container matColumnDef="StationName">
+      <th mat-header-cell *matHeaderCellDef class="hedder"> Station Name </th>
+      <td mat-cell *matCellDef="let element" class="tableContent">{{element.name}}</td>
+    </ng-container>
+    <!-- Temperature Column -->
+    <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef class="hedder"> Status</th>
+      <td mat-cell *matCellDef="let element" class="tableContent">
+        <mat-icon *ngIf="element.active" style="color:green" class="example-icon" aria-hidden="false"
+          aria-label="Example heart icon">
+          check_circle_outline</mat-icon>
+        <mat-icon *ngIf="!element.active" style="color:red" class="example-icon" aria-hidden="false"
+          aria-label="Example heart icon">
+          highlight_off</mat-icon>
+      </td>
+    </ng-container>
+
+    <!-- Pressure Column -->
+    <ng-container matColumnDef="Time">
+      <th mat-header-cell *matHeaderCellDef class="hedder"> Time </th>
+      <td mat-cell *matCellDef="let element" class="tableContent"> {{element.latTime}} </td>
+    </ng-container>
+
+    <!-- Pressure Column -->
+    <ng-container matColumnDef="info">
+      <th mat-header-cell *matHeaderCellDef class="hedder"> Last data log </th>
+      <td mat-cell *matCellDef="let element" class="tableContent"> {{element.days}} Days {{element.hours}} Hours
+        {{element.hours}} minutes </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr> -->
+  </table>
+</div>

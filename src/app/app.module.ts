@@ -24,6 +24,7 @@ import { LastdataSetComponent } from './component/weather-card/lastdata-set/last
 import { CardtemplateComponent } from './component/weather-card/cardtemplate/cardtemplate.component';
 import { StationStatusComponent } from './component/station-status/station-status.component';
 import { ToolbarTemplateComponent } from './component/station-status/toolbar-template/toolbar-template.component';
+import { AllStationsComponent } from './component/all-stations/all-stations.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ToolbarTemplateComponent } from './component/station-status/toolbar-tem
     LastdataSetComponent,
     CardtemplateComponent,
     StationStatusComponent,
-    ToolbarTemplateComponent
+    ToolbarTemplateComponent,
+    AllStationsComponent,
   ],
   imports: [
     BrowserModule,
