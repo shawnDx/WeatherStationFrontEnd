@@ -45,7 +45,7 @@ export class DataService {
   private stationName = new BehaviorSubject<string>("University Of Moratuwa(FIT) PCB");
   currentStationName = this.stationName.asObservable();
 
-  private changePage = new BehaviorSubject<boolean>(false);
+  private changePage = new BehaviorSubject<boolean>(true);
   currentPage = this.changePage.asObservable();
 
   constructor() { }

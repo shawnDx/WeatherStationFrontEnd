@@ -2,13 +2,17 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
-    <mat-nav-list>
-      <app-sidebar></app-sidebar>
-    </mat-nav-list>
+    <div class="no-v-scroll">
+      <mat-toolbar color="primary" class="matToolbar" style="flex: 0 0 60px;">Stations</mat-toolbar>
+      <div style="overflow-y: auto;">
+        <mat-nav-list>
+          <app-sidebar></app-sidebar>
+        </mat-nav-list>
+      </div>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" class="matToolbar">
+    <mat-toolbar color="primary" class="matToolbar" style="flex: 0 0 60px;">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -16,21 +20,22 @@
       <span>Weather UOM</span>
       <span class="toolbar-spacer"></span>
 
-      <mat-icon (click)="changePage()" class="toolbar-icon canclick" aria-hidden="false" aria-label="Example delete icon">format_align_center</mat-icon>
+      <mat-icon (click)="changePage()" class="toolbar-icon canclick" aria-hidden="false"
+        aria-label="Example delete icon">format_align_center</mat-icon>
       <p class="canclick" (click)="changePage()">All Stations</p>
 
-      <mat-icon  class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon">access_time</mat-icon>
+      <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon">access_time</mat-icon>
       <h6>{{dateTime}}</h6>
-      
+
     </mat-toolbar>
-    <!-- <div>
-      <div *ngIf="!page">
+    <div>
+      <div *ngIf="page">
+        <app-all-stations></app-all-stations>
+      </div>
+      <div class="content" *ngIf="!page">
         <ng-content></ng-content>
+        <!-- <app-station-status></app-station-status> -->
       </div>
-      <div class="content" *ngIf="page">
-        <app-station-status></app-station-status>
-      </div>
-    </div> -->
-    <app-all-stations></app-all-stations>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

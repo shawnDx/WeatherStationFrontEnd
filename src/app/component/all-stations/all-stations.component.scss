@@ -1,23 +1,45 @@
-table {
-    width: 100%;
-    background-color: rgba($color: white, $alpha: 0.032);
-  }
-  
-  .example-container {
-    padding: 20px;
-    overflow: auto;
-  }
-  
-  .hedder{
-    color:white;
-    font-size: 16px;
-  }
+.tableContainer{
+  padding: 25px
+}
 
-.tableContent{
+#station {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: 16px;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.tableHedding{
-
+#station td, #station th {
+  border: 0px solid #ddd;
+  padding: 8px;
 }
-  
+
+#station tr:nth-child(even){background-color:rgba($color: #000000, $alpha: 0.032);}
+
+#station tr:hover {background-color:rgba($color: white, $alpha: 0.2);}
+
+#station th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgba($color: black, $alpha: 0.2);
+  color: white;
+}
+.headder{
+  text-align: left;
+  background-color: rgba($color: black, $alpha: 0.2);
+  color: white;
+}
+
+.link{
+  cursor: pointer;
+}
+
+.text-inside-grid {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  position: absolute;
+  font-size: 18px;
+  left: 5px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}

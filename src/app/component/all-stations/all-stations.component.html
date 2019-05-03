@@ -1,40 +1,49 @@
-<div class="example-container mat-elevation-z8">
-  <table mat-table [dataSource]="tableData">
-    <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-    <!-- Temperature Column -->
-    <ng-container matColumnDef="StationName">
-      <th mat-header-cell *matHeaderCellDef class="hedder"> Station Name </th>
-      <td mat-cell *matCellDef="let element" class="tableContent">{{element.name}}</td>
-    </ng-container>
-    <!-- Temperature Column -->
-    <ng-container matColumnDef="Status">
-      <th mat-header-cell *matHeaderCellDef class="hedder"> Status</th>
-      <td mat-cell *matCellDef="let element" class="tableContent">
-        <mat-icon *ngIf="element.active" style="color:green" class="example-icon" aria-hidden="false"
-          aria-label="Example heart icon">
-          check_circle_outline</mat-icon>
-        <mat-icon *ngIf="!element.active" style="color:red" class="example-icon" aria-hidden="false"
-          aria-label="Example heart icon">
-          highlight_off</mat-icon>
+<div class="tableContainer">
+  <!-- <table id="station">
+    <tr>
+      <th class="link" (click)="sortDatabyName()">Station Name</th>
+      <th class="link" (click)="sortDatabyactive()">Status</th>
+      <th class="link" (click)="sortDatabyaTime()">Time</th>
+      <th class="link" (click)="sortDatabyaTime()">Last data log</th>
+    </tr>
+    <tr *ngFor="let ele of tableDataSet">
+      <td>{{ele.name}}</td>
+      <td>
+        <mat-icon style="color:green" *ngIf="ele.active == 2" class="example-icon" aria-hidden="false"
+          aria-label="Example heart icon">check_circle_outline
+        </mat-icon>
+        <mat-icon style="color:rgb(223, 148, 10)" *ngIf="ele.active == 1" class="example-icon" aria-hidden="false"
+          aria-label="Example heart icon">warning
+        </mat-icon>
+        <mat-icon style="color:red" *ngIf="!ele.active" class="example-icon" aria-hidden="false"
+          aria-label="Example heart icon">highlight_off
+        </mat-icon>
+
       </td>
-    </ng-container>
-
-    <!-- Pressure Column -->
-    <ng-container matColumnDef="Time">
-      <th mat-header-cell *matHeaderCellDef class="hedder"> Time </th>
-      <td mat-cell *matCellDef="let element" class="tableContent"> {{element.latTime}} </td>
-    </ng-container>
-
-    <!-- Pressure Column -->
-    <ng-container matColumnDef="info">
-      <th mat-header-cell *matHeaderCellDef class="hedder"> Last data log </th>
-      <td mat-cell *matCellDef="let element" class="tableContent"> {{element.days}} Days {{element.hours}} Hours
-        {{element.hours}} minutes </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr> -->
-  </table>
+      <td>{{ele.latTime}}</td>
+      <td>{{ele.days}} Days {{ele.hours}} Hours {{ele.min}} Minute</td>
+    </tr>
+  </table> -->
+  <!-- <app-row></app-row> -->
+  <mat-grid-list cols="4" rowHeight="7:1" class="headder">
+    <mat-grid-tile>
+      <div class="text-inside-grid">Station Name</div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="text-inside-grid">Status</div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="text-inside-grid">Time</div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="text-inside-grid">Last data log</div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div *ngFor="let satation of StationList; let i = index">
+    <div class="separator">
+      <div class="link">
+        <app-row (click)="changeStation(satation.id,satation.name)" id={{satation.id}} name={{satation.name}} count = {{i}}></app-row>
+      </div>
+    </div>
+  </div>
 </div>

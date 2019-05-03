@@ -12,7 +12,7 @@ import { DataService } from '../../service/data.service'
 export class MainNavComponent implements OnInit {
 
   dateTime: string;
-  page: boolean = false;
+  page: boolean = true;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)

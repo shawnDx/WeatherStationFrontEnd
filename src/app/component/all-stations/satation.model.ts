@@ -1,7 +1,8 @@
 export class Station {
     name: string
-    active: boolean
+    active: number
     latTime: string
+    totalmin:number
     days: number
     hours: number
     min: number
