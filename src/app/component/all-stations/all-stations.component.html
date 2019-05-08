@@ -25,24 +25,24 @@
     </tr>
   </table> -->
   <!-- <app-row></app-row> -->
-  <mat-grid-list cols="4" rowHeight="7:1" class="headder">
-    <mat-grid-tile>
+  <mat-grid-list cols="10" rowHeight="60px" class="headder">
+    <mat-grid-tile [colspan] = 4>
       <div class="text-inside-grid">Station Name</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan] = 1>
       <div class="text-inside-grid">Status</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan] = 2>
       <div class="text-inside-grid">Time</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan] = 3>
       <div class="text-inside-grid">Last data log</div>
     </mat-grid-tile>
   </mat-grid-list>
   <div *ngFor="let satation of StationList; let i = index">
     <div class="separator">
       <div class="link">
-        <app-row (click)="changeStation(satation.id,satation.name)" id={{satation.id}} name={{satation.name}} count = {{i}}></app-row>
+        <app-row (click)="changeStation(satation.id,satation.name,satation.type)" id={{satation.id}} type={{satation.type}} name={{satation.name}} count = {{i}}></app-row>
       </div>
     </div>
   </div>

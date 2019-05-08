@@ -10,13 +10,13 @@ export class SidebarComponent implements OnInit {
 
   constructor(private data: DataService) {
     this.stationList = data.stationList;
-   }
-  stationList:any
+  }
+  stationList: any
   ngOnInit() {
   }
 
-  changeStation(id: string, name: string) {
-    this.data.changStation(id, name);
+  changeStation(id: string, name: string, type: number) {
+    this.data.changStation(id, name, type);
     this.data.change(false);
   }
 

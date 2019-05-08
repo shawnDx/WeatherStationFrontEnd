@@ -3,14 +3,25 @@
         <h1 class="headdign">{{stationDispayName}}</h1>
     </div>
     <div *ngIf="workingFlag">
-        <div>
-            <div class="inline" *ngFor="let card of cards">
-                <app-cardtemplate [card]='card'></app-cardtemplate>
+        <div *ngIf="type == 1">
+            <div>
+                <div class="inline" *ngFor="let card of cards">
+                    <app-cardtemplate [card]='card'></app-cardtemplate>
+                </div>
+            </div>
+            <div>
+                <h2 class="headdign">Last two hours</h2>
+                <app-lastdata-set [data]='tableData'></app-lastdata-set>
             </div>
         </div>
-        <div>
-            <h2 class="headdign">Last two hours</h2>
-            <app-lastdata-set [data]='tableData'></app-lastdata-set>
+        <div *ngIf="type == 2 || type == 3">
+            <div>
+                <app-cardtemplate [card]='waterLevel'></app-cardtemplate>
+            </div>
+            <div>
+                <h2 class="headdign">Last two hours</h2>
+                <app-water-level-last-data [data]='tableData'></app-water-level-last-data>
+            </div>
         </div>
     </div>
     <div *ngIf="!workingFlag">

@@ -36,6 +36,7 @@ export class ToolbarTemplateComponent implements OnInit {
   }
   @Input('id') id: string
   @Input('name') name: string
+  @Input('type') type: string
   constructor(private apiService: ApiService) {
   }
 
@@ -47,7 +48,7 @@ export class ToolbarTemplateComponent implements OnInit {
     }, 60000);
   }
   getdata() {
-    this.apiService.getLastDataLog({ station: this.id }).pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
+    this.apiService.getLastDataLog({ station: this.id, type: this.type }).pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
       console.log(result);
       if (result.success) {
         this.toolbarModel = result;

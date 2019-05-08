@@ -11,7 +11,7 @@ import { Station } from './satation.model';
 })
 export class AllStationsComponent implements OnInit {
   StationList = this.data.stationList;
-  
+
   constructor(private apiService: ApiService, private data: DataService, private changeDetectorRefs: ChangeDetectorRef) {
   }
   ngOnInit() {
@@ -21,8 +21,8 @@ export class AllStationsComponent implements OnInit {
   ngOnDestroy() {
 
   }
-  changeStation(id: string, name: string) {
-    this.data.changStation(id, name);
+  changeStation(id: string, name: string, type: number) {
+    this.data.changStation(id, name, type);
     this.data.change(false);
   }
 }

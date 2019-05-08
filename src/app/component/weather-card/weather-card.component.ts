@@ -24,8 +24,10 @@ export class WeatherCardComponent implements OnDestroy, OnInit {
   winSpeedCard: Card;
   windDirectionCard: Card;
   lightCard: Card;
+  waterLevel: Card;
   stationName: string = "University%20of%20Moratuwa(TCP)PCB";
   stationDispayName: string = "University Of Moratuwa(FIT) PCB"
+  type: number = 1;
   workingFlag: Boolean = false;
   loadingFlag: Boolean = true;
 
@@ -81,6 +83,12 @@ export class WeatherCardComponent implements OnDestroy, OnInit {
     this.lightCard.data = 160.5;
     this.lightCard.uom = "lux";
     this.cards.push(this.lightCard);
+
+    this.waterLevel = new Card();
+    this.waterLevel.title = "Water Level";
+    this.waterLevel.imageurl = "../../../assets/weatherInfoImg/waterlevel.png"
+    this.waterLevel.data = 0.0;
+    this.waterLevel.uom = "ml";
   }
 
   ngOnInit() {
@@ -89,8 +97,11 @@ export class WeatherCardComponent implements OnDestroy, OnInit {
     })
     this.data.currentStation.subscribe(station => {
       this.stationName = station;
-      this.getdata(true);
     });
+    this.data.currentType.subscribe(type => {
+      this.type = type
+      this.getdata(true);
+    })
     this.getdata(true);
 
 
@@ -107,27 +118,35 @@ export class WeatherCardComponent implements OnDestroy, OnInit {
 
   getdata(isFirstload: Boolean) {
     if (isFirstload) this.loadingFlag = true;
-    this.apiService.getThisTimeData({ station: this.stationName }).pipe(takeUntil(this.ngUnsubscribe)).subscribe(data => {
+    this.apiService.getThisTimeData({ station: this.stationName, type: this.type }).pipe(takeUntil(this.ngUnsubscribe)).subscribe(data => {
       if (data[0].success) {
         this.workingFlag = true;
         this.tableData = data;
         var result = data[0];
-        console.log(data);
-        this.tempretureCard.singleValueverify((Number(result.temperature)).toFixed(2), 50, 10);
-        this.pressureCard.singleValueverifyWithTwoType((Number(result.pressure)).toFixed(2), 110, 85, "Kpa", 1020, 900, "hpa");
-        this.humidityCard.singleValueverify((Number(result.humidity)).toFixed(2), 101, 0.01);
-        this.winSpeedCard.multiValueverify(data, "windVelocity")// have ti use multi vaue verification
-        this.windDirectionCard.multiValueverify(data, "windDirection") // have to use multi value verification
-        this.rainfallCard.data = (Number(result.rainFall)).toFixed(2); // still Canot do verifiacation
-        this.lightCard.data = (Number(result.light)).toFixed(2); // have to use time verification
+        // console.log(data);
+        if (this.type == 1) {
 
-        this.tempretureCard.dateTime = result.time;
-        this.pressureCard.dateTime = result.time;
-        this.humidityCard.dateTime = result.time;
-        this.rainfallCard.dateTime = result.time;
-        this.winSpeedCard.dateTime = result.time;
-        this.windDirectionCard.dateTime = result.time;
-        this.lightCard.dateTime = result.time;
+
+          this.tempretureCard.singleValueverify((Number(result.temperature)).toFixed(2), 50, 10);
+          this.pressureCard.singleValueverifyWithTwoType((Number(result.pressure)).toFixed(2), 110, 85, "Kpa", 1020, 900, "hpa");
+          this.humidityCard.singleValueverify((Number(result.humidity)).toFixed(2), 101, 0.01);
+          this.winSpeedCard.multiValueverify(data, "windVelocity")// have ti use multi vaue verification
+          this.windDirectionCard.multiValueverify(data, "windDirection") // have to use multi value verification
+          this.rainfallCard.data = (Number(result.rainFall)).toFixed(2); // still Canot do verifiacation
+          this.lightCard.data = (Number(result.light)).toFixed(2); // have to use time verification
+
+          this.tempretureCard.dateTime = result.time;
+          this.pressureCard.dateTime = result.time;
+          this.humidityCard.dateTime = result.time;
+          this.rainfallCard.dateTime = result.time;
+          this.winSpeedCard.dateTime = result.time;
+          this.windDirectionCard.dateTime = result.time;
+          this.lightCard.dateTime = result.time;
+        }
+        else if(this.type == 2 || this.type == 3){
+          this.waterLevel.multiValueverifynonNegative(data,"waterLevel");
+          this.waterLevel.dateTime = result.time;
+        }
       }
       else {
         this.workingFlag = false;

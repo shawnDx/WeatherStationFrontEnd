@@ -38,6 +38,7 @@ export class RowComponent implements OnInit {
   @Input('id') id: string
   @Input('name') name: string
   @Input('count') count:number
+  @Input('type') type:string
   constructor(private apiService: ApiService) {
   }
 
@@ -49,8 +50,8 @@ export class RowComponent implements OnInit {
     }, 60000);
   }
   getdata() {
-    this.apiService.getLastDataLog({ station: this.id }).pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
-      console.log(result);
+    this.apiService.getLastDataLog({ station: this.id,type:this.type }).pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
+      // console.log(result);
       if (result.success) {
         this.toolbarModel = result;
         this.evaluate(result.dateTime);

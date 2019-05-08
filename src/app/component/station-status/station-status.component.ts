@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../service/data.service'
+import { DataService } from '../../service/data.service'
 
 
 @Component({
@@ -8,19 +8,19 @@ import {DataService} from '../../service/data.service'
   styleUrls: ['./station-status.component.scss']
 })
 export class StationStatusComponent implements OnInit {
-  StationList:any
-  data={
-    success:false
+  StationList: any
+  data = {
+    success: false
   }
-  constructor(private dataService:DataService) { 
+  constructor(private dataService: DataService) {
     this.StationList = dataService.stationList;
   }
   ngOnInit() {
-    
+
   }
 
-  changeStation(id: string, name: string) {
-    this.dataService.changStation(id, name);
+  changeStation(id: string, name: string, type: number) {
+    this.dataService.changStation(id, name, type);
     this.dataService.change(false);
   }
 

@@ -1,7 +1,7 @@
 <div *ngFor="let satation of StationList">
   <div class="separator">
     <div class="link">
-        <app-toolbar-template (click)="changeStation(satation.id,satation.name)" id={{satation.id}} name = {{satation.name}}></app-toolbar-template>
+        <app-toolbar-template (click)="changeStation(satation.id,satation.name,satation.type)" id={{satation.id}} name = {{satation.name}}></app-toolbar-template>
     </div>
   </div>
 </div>

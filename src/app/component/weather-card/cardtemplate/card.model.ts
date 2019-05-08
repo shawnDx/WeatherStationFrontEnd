@@ -43,4 +43,19 @@ export class Card {
         }
         this.data = Number(value[0][key]).toFixed(2);
     }
+
+    multiValueverifynonNegative(value: any, key: string) {
+        this.error = false;
+        for (let i = 0; i < value.length - 1; i++) {
+            if (value[i][key] > 0) {
+                continue;
+            }
+            else {
+                this.error = true;
+                break;
+            }
+        }
+        this.data = Number(value[0][key]).toFixed(2);
+    }
+
 }

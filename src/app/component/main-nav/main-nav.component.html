@@ -13,8 +13,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary" class="matToolbar" style="flex: 0 0 60px;">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Weather UOM</span>
@@ -24,8 +23,8 @@
         aria-label="Example delete icon">format_align_center</mat-icon>
       <p class="canclick" (click)="changePage()">All Stations</p>
 
-      <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon">access_time</mat-icon>
-      <h6>{{dateTime}}</h6>
+      <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon" *ngIf="!(isHandset$ | async)">access_time</mat-icon>
+      <h6 *ngIf="!(isHandset$ | async)">{{dateTime}}</h6>
 
     </mat-toolbar>
     <div>

@@ -1,5 +1,5 @@
-<mat-grid-list cols="4" rowHeight="8:1" [ngClass]="count%2==1?'type2':'type1'">
-    <mat-grid-tile>
+<mat-grid-list cols="10" rowHeight="50px" [ngClass]="count%2==1?'type2':'type1'">
+    <mat-grid-tile [colspan]=4>
         <div class="text-inside-grid">{{tonumber(count)}}. {{name}}
         </div>
         <!-- <mat-progress-spinner class="inline" *ngIf="!ready" [diameter]="15" mode="indeterminate"></mat-progress-spinner> -->
@@ -7,17 +7,20 @@
     <mat-grid-tile>
         <div class="text-inside-grid">
             <mat-icon style="color:green" *ngIf="active==2&&ready" class="example-icon" aria-hidden="false"
-                aria-label="Example heart icon" matTooltip="Active"matTooltipClass="example-tooltip-green">check_circle_outline</mat-icon>
+                aria-label="Example heart icon" matTooltip="Active" matTooltipClass="example-tooltip-green">
+                check_circle_outline</mat-icon>
             <mat-icon style="color:rgb(231, 153, 8)" *ngIf="active==1&&ready" class="example-icon" aria-hidden="false"
-                aria-label="Example heart icon" matTooltip="Warning" matTooltipClass="example-tooltip-orange">warning</mat-icon>
+                aria-label="Example heart icon" matTooltip="Warning" matTooltipClass="example-tooltip-orange">warning
+            </mat-icon>
             <mat-icon style="color:red" *ngIf="active==0&&ready" class="example-icon" aria-hidden="false"
-                aria-label="Example heart icon" matTooltip="Not working" matTooltipClass="example-tooltip-red">highlight_off</mat-icon>
+                aria-label="Example heart icon" matTooltip="Not working" matTooltipClass="example-tooltip-red">
+                highlight_off</mat-icon>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]=2>
         <div class="text-inside-grid">{{this.time.lastTime}} {{this.time.lastdate}}</div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]=3>
         <div class="text-inside-grid">{{this.time.difDate}} Days {{this.time.difHour}} Hours {{this.time.difMin}}
             Minutes</div>
     </mat-grid-tile>
