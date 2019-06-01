@@ -27,7 +27,7 @@ export class DataService {
     { name: "Madamulla (MOD)", id: "MEDAMULLA_MOD", type: 1 },
     { name: "Paragahadeniya (PCB)", id: "PARAGAHADENIYA_PCB", type: 1 },
     { name: "Polpithigama (MOD)", id: "POLPITHIGAMA_MOD", type: 1 },
-    { name: "Porapola (PCB)", id: "PORAPOLA_PCB", type: 1 },
+    { name: "Porapola (PCB)", id: "PORAPOLA_PCB_2", type: 1 },
     { name: "Rambadagalla (PCB)", id: "RAMBADAGALLA_PCB", type: 1 },
     { name: "S.B Herath (MOD)", id: "SB_HERATH_MOD", type: 1 },
     { name: "Sri Sudaramaramaya (MOD)", id: "SRI_SUDARSHANARAMAYA_MOD", type: 1 },
