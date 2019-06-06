@@ -1,7 +1,39 @@
-<div *ngFor="let satation of StationList">
-  <div class="separator">
-    <div class="link">
-        <app-toolbar-template (click)="changeStation(satation.id,satation.name,satation.type)" id={{satation.id}} name = {{satation.name}}></app-toolbar-template>
-    </div>
+<div class="container" *ngIf="!loading">
+  <table id="station">
+    <tr>
+      <th>No</th>
+      <th (click)="sort('name')">Station Name</th>
+      <th (click)="sort('active')">Status</th>
+      <th (click)="sort('time')">Time </th>
+      <th *ngIf="!(isHandset$ | async)">Last data log</th>
+      <th (click)="sort('type')">Type</th>
+    </tr>
+    <tr *ngFor="let satation of StationList; let i = index"
+      (click)="changeStation(satation.id,satation.name,satation.type)">
+      <td>{{i+1}}</td>
+      <td>{{satation.name}}</td>
+      <td>
+        <mat-icon style="color:green" *ngIf="satation.active==2" class="example-icon" aria-hidden="false"
+          aria-label="Example heart icon" matTooltip="Active" matTooltipClass="example-tooltip-green">
+          check_circle_outline</mat-icon>
+        <mat-icon style="color:rgb(231, 153, 8)" *ngIf="satation.active==1" class="example-icon" aria-hidden="false"
+          aria-label="Example heart icon" matTooltip="Warning" matTooltipClass="example-tooltip-orange">warning
+        </mat-icon>
+        <mat-icon style="color:red" *ngIf="satation.active==0" class="example-icon" aria-hidden="false"
+          aria-label="Example heart icon" matTooltip="Not working" matTooltipClass="example-tooltip-red">
+          highlight_off</mat-icon>
+      </td>
+      <td>{{satation.lastdate}}</td>
+      <td *ngIf="!(isHandset$ | async)">{{satation.difDate}} Days {{satation.difHour}} hours {{satation.difMin}} minutes
+      </td>
+      <td *ngIf = "satation.type == 1">WS</td>
+      <td *ngIf = "satation.type == 2 || satation.type == 3">RG</td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="loading">
+  <div class="loading-indicator">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
   </div>
 </div>
+<!-- <td>{{satation.difDate}} D {{satation.difHour}} H  {{satation.difMin}} M</td> -->

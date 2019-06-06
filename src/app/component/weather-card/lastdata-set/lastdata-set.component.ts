@@ -36,4 +36,8 @@ export class LastdataSetComponent implements OnInit {
   displayedColumns: string[] = ['time','temperature', 'pressure','humidity','Rainfall','Wind Speed','Wind Direction','Light','internalTemperature'];
   //dataSource = this.tableData;
 
+  tonumber(value){
+    return Number(value).toFixed(2);
+  }
+
 }

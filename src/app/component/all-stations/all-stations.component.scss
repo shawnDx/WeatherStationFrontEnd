@@ -1,4 +1,4 @@
-.tableContainer{
+.tableContainer {
   // padding: 10px;
 }
 
@@ -9,14 +9,19 @@
   width: 100%;
 }
 
-#station td, #station th {
+#station td,
+#station th {
   border: 0px solid #ddd;
   padding: 8px;
 }
 
-#station tr:nth-child(even){background-color:rgba($color: #000000, $alpha: 0.032);}
+#station tr:nth-child(even) {
+  background-color: rgba($color: #000000, $alpha: 0.032);
+}
 
-#station tr:hover {background-color:rgba($color: white, $alpha: 0.2);}
+#station tr:hover {
+  background-color: rgba($color: white, $alpha: 0.2);
+}
 
 #station th {
   padding-top: 12px;
@@ -25,13 +30,13 @@
   background-color: rgba($color: black, $alpha: 0.2);
   color: white;
 }
-.headder{
+.headder {
   text-align: left;
   background-color: rgba($color: black, $alpha: 0.2);
   color: white;
 }
 
-.link{
+.link {
   cursor: pointer;
 }
 

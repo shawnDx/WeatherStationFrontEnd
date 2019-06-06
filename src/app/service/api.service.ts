@@ -24,4 +24,10 @@ export class ApiService {
     return this.http.post(hostAddress + '/frontEnd/lastDataLog', data, { headers: headers })
       .pipe(map(res => res.json()));
   }
+  getLastDataLogFroAllStation() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(hostAddress + '/frontEnd/getLstDtaLg', { headers: headers })
+      .pipe(map(res => res.json()));
+  }
 }
