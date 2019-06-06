@@ -12,7 +12,8 @@ import {
     MatTableModule,
     MatDividerModule,
     MatProgressSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatExpansionModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -31,7 +32,8 @@ import { NgModule } from '@angular/core';
         MatTableModule,
         MatDividerModule,
         MatProgressSpinnerModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatExpansionModule
     ],
     exports: [
         MatButtonModule,
@@ -47,7 +49,8 @@ import { NgModule } from '@angular/core';
         MatTableModule,
         MatDividerModule,
         MatProgressSpinnerModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatExpansionModule
     ],
 })
 export class MaterialModule { }

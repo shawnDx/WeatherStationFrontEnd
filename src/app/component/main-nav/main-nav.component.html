@@ -5,6 +5,19 @@
     <div class="no-v-scroll">
       <mat-toolbar color="primary" class="matToolbar" style="flex: 0 0 60px;">Stations</mat-toolbar>
       <div style="overflow-y: auto;">
+        <app-summary></app-summary>
+        <!-- <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      Stations
+                  </mat-panel-title>
+                  <mat-panel-description>   
+                  </mat-panel-description>
+              </mat-expansion-panel-header>
+        <mat-nav-list>
+          <app-sidebar></app-sidebar>
+        </mat-nav-list>
+        </mat-expansion-panel> -->
         <mat-nav-list>
           <app-sidebar></app-sidebar>
         </mat-nav-list>
@@ -20,10 +33,11 @@
       <span class="toolbar-spacer"></span>
 
       <mat-icon (click)="changePage()" class="toolbar-icon canclick" aria-hidden="false"
-        aria-label="Example delete icon">format_align_center</mat-icon>
+        aria-label="Example delete icon">select_all</mat-icon>
       <p class="canclick" (click)="changePage()">All Stations</p>
 
-      <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon" *ngIf="!(isHandset$ | async)">access_time</mat-icon>
+      <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon" *ngIf="!(isHandset$ | async)">
+        access_time</mat-icon>
       <h6 *ngIf="!(isHandset$ | async)">{{dateTime}}</h6>
 
     </mat-toolbar>

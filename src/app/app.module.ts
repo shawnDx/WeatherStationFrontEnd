@@ -27,6 +27,7 @@ import { ToolbarTemplateComponent } from './component/station-status/toolbar-tem
 import { AllStationsComponent } from './component/all-stations/all-stations.component';
 import { RowComponent } from './component/all-stations/row/row.component';
 import { WaterLevelLastDataComponent } from './component/weather-card/water-level-last-data/water-level-last-data.component';
+import { SummaryComponent } from './component/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { WaterLevelLastDataComponent } from './component/weather-card/water-leve
     AllStationsComponent,
     RowComponent,
     WaterLevelLastDataComponent,
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,

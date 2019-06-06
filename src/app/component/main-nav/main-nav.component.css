@@ -9,7 +9,7 @@
   width: 300px;
   border-right: 0;
   box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, .89);
 }
 
 /*Toolbar drop shadow*/
