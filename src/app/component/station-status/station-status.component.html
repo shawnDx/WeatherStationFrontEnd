@@ -2,11 +2,11 @@
   <table id="station">
     <tr>
       <th>No</th>
-      <th (click)="sort('name')">Station Name</th>
-      <th (click)="sort('active')">Status</th>
-      <th (click)="sort('time')">Time </th>
+      <th (click)="sort('name',true)">Station Name</th>
+      <th (click)="sort('active',true)">Status</th>
+      <th (click)="sort('time',true)">Time </th>
       <th *ngIf="!(isHandset$ | async)">Last data log</th>
-      <th (click)="sort('type')">Type</th>
+      <th (click)="sort('type',true)">Type</th>
     </tr>
     <tr *ngFor="let satation of StationList; let i = index"
       (click)="changeStation(satation.id,satation.name,satation.type)">

@@ -21,7 +21,8 @@ export class StationStatusComponent implements OnInit {
   private ngUnsubscribe = new Subject();
   refreshData: any
   loading: Boolean = true;
-  key: string = 'name';
+  key: string = 'time';
+  flip: number = 1;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -85,21 +86,25 @@ export class StationStatusComponent implements OnInit {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
-  sort(key) {
+  sort(key, flip = false) {
     this.key = key;
+    if (flip) {
+      this.flip = this.flip * -1;
+    }
+
     if (key == "name" || key == 'lastdate') {
       this.StationList.sort((a, b) => {
-        return a[key].localeCompare(b[key])
+        return (a[key].localeCompare(b[key])) * this.flip;
       }
       );
     }
     else {
       this.StationList.sort((a, b) => {
         if (a[key] > b[key]) {
-          return 1;
+          return 1 * this.flip;
         }
         else if (a[key] < b[key]) {
-          return -1;
+          return -1 * this.flip;
         }
         else {
           return 0;
