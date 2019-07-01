@@ -32,20 +32,27 @@
       <span>Weather UOM</span>
       <span class="toolbar-spacer"></span>
 
-      <mat-icon (click)="changePage()" class="toolbar-icon canclick" aria-hidden="false"
+      <mat-icon (click)="changePage(1)" class="toolbar-icon canclick" aria-hidden="false"
         aria-label="Example delete icon">select_all</mat-icon>
-      <p class="canclick" (click)="changePage()">All Stations</p>
+      <p class="canclick" (click)="changePage(1)">All Stations</p>
 
+      <mat-icon (click)="changePage(3)" class="toolbar-icon canclick" aria-hidden="false"
+        aria-label="Example delete icon">map</mat-icon>
+      <p class="canclick" (click)="changePage(3)">Map</p>
+<!-- 
       <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Example heart icon" *ngIf="!(isHandset$ | async)">
         access_time</mat-icon>
-      <h6 *ngIf="!(isHandset$ | async)">{{dateTime}}</h6>
+      <h6 *ngIf="!(isHandset$ | async)">{{dateTime}}</h6> -->
 
     </mat-toolbar>
     <div>
-      <div *ngIf="page">
+      <div *ngIf="page==1">
         <app-station-status></app-station-status>
       </div>
-      <div class="content" *ngIf="!page">
+      <div *ngIf="page==3">
+        <app-map></app-map>
+      </div>
+      <div class="content" *ngIf="page == 2">
         <ng-content></ng-content>
         <!-- <app-station-status></app-station-status> -->
       </div>

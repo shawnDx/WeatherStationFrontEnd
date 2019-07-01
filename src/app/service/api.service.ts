@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { map } from 'rxjs/operators';
 
-const hostAddress: string = "https://wsdispalyserver.herokuapp.com";//"http://localhost:3000"//
+const hostAddress: string = "http://localhost:3000"//"https://wsdispalyserver.herokuapp.com";//
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,13 @@ export class ApiService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.get(hostAddress + '/frontEnd/getLstDtaLg', { headers: headers })
+      .pipe(map(res => res.json()));
+  }
+
+  getLocationForAllStation() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(hostAddress + '/frontEnd/location', { headers: headers })
       .pipe(map(res => res.json()));
   }
 }

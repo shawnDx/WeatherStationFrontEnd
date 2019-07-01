@@ -12,17 +12,20 @@ import { DataService } from '../../service/data.service'
 export class MainNavComponent implements OnInit {
 
   dateTime: string;
-  page: boolean = true;
+  page: number = 1;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private data: DataService) {
-    setInterval(() => {
-      let currentDate = new Date();
-      this.dateTime = currentDate.toLocaleDateString() + " " + currentDate.toLocaleTimeString();
-    }, 1000)
+    /**
+     * 
+     */
+    // setInterval(() => {
+    //   let currentDate = new Date();
+    //   this.dateTime = currentDate.toLocaleDateString() + " " + currentDate.toLocaleTimeString();
+    // }, 1000)
   }
   ngOnInit(): void {
     this.data.currentPage.subscribe(status => {
@@ -30,8 +33,8 @@ export class MainNavComponent implements OnInit {
     })
   }
 
-  changePage() {
-    this.page = true;
+  changePage(page:number) {
+    this.page = page;
   }
 
 }

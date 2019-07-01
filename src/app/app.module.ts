@@ -28,6 +28,8 @@ import { AllStationsComponent } from './component/all-stations/all-stations.comp
 import { RowComponent } from './component/all-stations/row/row.component';
 import { WaterLevelLastDataComponent } from './component/weather-card/water-level-last-data/water-level-last-data.component';
 import { SummaryComponent } from './component/summary/summary.component';
+import { MapComponent } from './component/map/map.component';
+import { PopupComponent } from './component/map/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { SummaryComponent } from './component/summary/summary.component';
     RowComponent,
     WaterLevelLastDataComponent,
     SummaryComponent,
+    MapComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,

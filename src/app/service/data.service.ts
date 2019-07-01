@@ -55,7 +55,7 @@ export class DataService {
   private type = new BehaviorSubject<number>(1);
   currentType = this.type.asObservable();
 
-  private changePage = new BehaviorSubject<boolean>(true);
+  private changePage = new BehaviorSubject<number>(1);
   currentPage = this.changePage.asObservable();
 
   constructor() { }
@@ -66,7 +66,7 @@ export class DataService {
     this.stationName.next(stationName);
     this.type.next(type);
   }
-  change(status: boolean) {
+  change(status: number) {
     this.changePage.next(status);
   }
 }

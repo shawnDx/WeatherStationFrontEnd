@@ -78,7 +78,7 @@ export class StationStatusComponent implements OnInit {
 
   changeStation(id: string, name: string, type: number) {
     this.dataService.changStation(id, name, type);
-    this.dataService.change(false);
+    this.dataService.change(2);
   }
 
   ngOnDestroy() {

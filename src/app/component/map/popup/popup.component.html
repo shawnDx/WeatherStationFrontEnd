@@ -1,0 +1,16 @@
+<div *ngIf="stationData">
+    <span class="text">{{stationData.name}}</span>
+    <div *ngIf="weaterData">
+        <div *ngIf="weaterData[0].success">
+            <div *ngIf='stationData.type == 1'>
+                <img src="../../../../assets/weatherInfoImg/Temperature-icon.png" alt="" class="avatar">
+                <p>Temprature : {{toNumber(weaterData[0].temperature)}}</p>
+                <p>Rainfall : {{toNumber(weaterData[0].rainFall)}} <span (click)="changeStation(stationData.id,stationData.name,stationData.type)" style="color: blue; float: right; display: inline-block;" class="canclick"> <u>more..</u></span></p>
+            </div>
+            <div *ngIf='stationData.type == 2 || stationData.type == 3'>
+                <img src="../../../../assets/weatherInfoImg/waterlevel.png" alt="" class="avatar">
+                <p>Water Level : {{toNumber(weaterData[0].waterLevel)}} <span (click)="changeStation(stationData.id,stationData.name,stationData.type)" style="color: blue; float: right; display: inline-block;" class="canclick"> <u>more..</u></span></p>
+            </div>
+        </div>
+    </div>
+</div>

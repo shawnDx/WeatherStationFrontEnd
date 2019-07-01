@@ -23,7 +23,7 @@ export class AllStationsComponent implements OnInit {
   }
   changeStation(id: string, name: string, type: number) {
     this.data.changStation(id, name, type);
-    this.data.change(false);
+    this.data.change(2);
   }
 }
 
