@@ -49,7 +49,7 @@ export class MapComponent implements OnInit {
 
   raninig = new Style({
     image: new Icon(({
-      color: [14, 14, 180],
+      color: [14, 180, 180],
       crossOrigin: 'center',
       src: '../../assets/marker.png',
       scale: 0.12,
@@ -94,6 +94,16 @@ export class MapComponent implements OnInit {
     const deactive = new Style({
       image: new Icon(({
         color: [180, 14, 14],
+        crossOrigin: 'center',
+        src: '../../assets/marker.png',
+        scale: 0.12,
+        anchor: [0.5, 1]
+      }))
+    });
+
+    const river = new Style({
+      image: new Icon(({
+        color: [180, 14,180],
         crossOrigin: 'center',
         src: '../../assets/marker.png',
         scale: 0.12,
@@ -150,7 +160,13 @@ export class MapComponent implements OnInit {
             type: location[index].type,
             active: true
           });
-          marker.setStyle(style);
+          // console.log(location[index].type);
+          if (location[index].type == 1) {
+            marker.setStyle(style);
+          }
+          else {
+            marker.setStyle(river);
+          }
         }
         else {
           marker = new Feature({
@@ -255,7 +271,7 @@ export class MapComponent implements OnInit {
               break;
             }
           }
-          this.feture[index].setStyle(this.raninig);
+          // this.feture[index].setStyle(this.raninig);
         })
 
       }
